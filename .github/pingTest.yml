@@ -1,0 +1,19 @@
+name: commentCommands
+
+on:
+  issue_comment:
+    types: created
+
+jobs:
+  testCurl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download ffmpeg.zip
+        run: |
+          curl https://playwright.azureedge.net/builds/ffmpeg/1009/ffmpeg-linux.zip -o ffmpeg.zip
+      - name: Install unzip
+        run: apt-get install unzip
+      - name: Unzip ffmpeg.zip
+        run: unzip ffmpeg.zip
+      - name: ffmpeg -v
+        run: ffmpeg -v
